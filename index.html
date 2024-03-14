@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bitcoin Project</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+</head>
+<body class="mainContainer">
+    <form class="formContainer elem1">
+        <label for="coinType">Choose a coin:</label>
+        <select  class ="form1" id="coinType" name="coinType" >
+            <option  value="EUR">EUR</option>
+            <option  value="USD">USD</option>
+        </select>
+        <button class ="form1" id="submit"> Submit </button>
+        <input class ="form1" id ="textField" type="text" readonly>
+    </form>
+    <section class="elem1">
+        <p >Mean value of 5 minutes : <span id="resultOfFive"></span></p>
+    </section>
+    <section class="elem1">
+        <p>Mean value of 30 minutes : <span id="resultOfThirty"></span></p>
+    </section>
+    <section class="elem1">
+        <p>Mean value of 60 minutes : <span id="resultOfSixty"></span></p>
+    </section>
+    <div class="elem1" id="chart">
+    </div>
+    <script src="./main.js"></script>
+</body>
+</html>
