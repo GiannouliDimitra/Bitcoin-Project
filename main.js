@@ -19,7 +19,7 @@ let textOfSixty = document.getElementById("resultOfSixty");
 let submitBut = document.getElementById("submit");
 submitBut.addEventListener("click", getResult);
 
-
+//fetch the data
  const fetchData = async () => {
     let response = await fetch(`https://api.coinbase.com/v2/prices/spot?currency=EUR`);
     let data = await (response).json();
@@ -109,8 +109,10 @@ var options = {
   chart.render(); 
  
 };
+
 fetchData();
-setInterval (fetchData,1000);
+//fetch the data every single minute
+setInterval (fetchData,60000);
 
 async function getResult (event) {
     try {
