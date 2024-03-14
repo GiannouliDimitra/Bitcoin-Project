@@ -23,13 +23,22 @@
     padding: 10px;
     border-radius: 10px;
     border: 1px solid gray;
+    background-color: white;
 }
 .form1{
     padding:8px;
     margin:2px;
 }
+.result{
+    color:blue;
+    font-size:1.2rem;
+}
 button{
-    border-radius: 15px;
+    border-radius: 10px;
+}
+button:active {
+box-shadow: inset 0px 0px 50px #c1c1c1;
+outline: none;
 }
 #chart{
     border:none;
