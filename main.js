@@ -1,4 +1,5 @@
 //declare the variables
+
 let fiveMinData = [];
 let thirtyMinData = [];
 let sixtyMinData = [];
@@ -11,6 +12,10 @@ let meanOfFive ;
 let meanOfThirty ;
 let meanOfSixty ;
 
+//declare the value of currency
+let currency;
+
+//declare the elements that will show the mean result
 let textOfFive = document.getElementById("resultOfFive");
 let textOfThirty = document.getElementById("resultOfThirty");
 let textOfSixty = document.getElementById("resultOfSixty");
@@ -19,10 +24,15 @@ let textOfSixty = document.getElementById("resultOfSixty");
 let submitBut = document.getElementById("submit");
 submitBut.addEventListener("click", getResult);
 
-//fetch the data
+
  const fetchData = async () => {
-    let response = await fetch(`https://api.coinbase.com/v2/prices/spot?currency=EUR`);
+//fetch the data with the type of currency that was selected
+    let response = await fetch(`https://api.coinbase.com/v2/prices/spot?currency=${currency}`);
     let data = await (response).json();
+ 
+    
+//display of each price
+    document.getElementById("textField").value = `${data.data.amount} ${currency}`;
 
 //add the values in the arrays and add them to the sum__ variable
     fiveMinData.push(Number(data.data.amount));
@@ -107,22 +117,25 @@ var options = {
   
   var chart = new ApexCharts(document.querySelector("#chart"), options);
   chart.render(); 
- 
 };
 
-fetchData();
-//fetch the data every single minute
-setInterval (fetchData,60000);
 
-async function getResult (event) {
+function getResult (event) {
     try {
-        let currency = document.getElementById("coinType").value;
         event.preventDefault();
-        let response = await fetch(
-            `https://api.coinbase.com/v2/prices/spot?currency=${currency}`
-        );
-        let data = await (response).json();
-        document.getElementById("textField").value = `${data.data.amount} ${currency}`;    
+        fiveMinData = [];
+        thirtyMinData = [];
+        sixtyMinData = [];
+        sumOfFive = 0;
+        sumOfThirty = 0;
+        sumOfSixty = 0;
+        textOfFive.innerHTML = ""
+        textOfThirty.innerHTML = ""
+        textOfSixty.innerHTML = ""
+        currency = document.getElementById("coinType").value;
+        fetchData();
+//fetch the data every single minute
+        setInterval (fetchData,5000);   
     } catch (error) {
     console.log(error) 
     }
