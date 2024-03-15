@@ -135,7 +135,7 @@ function getResult (event) {
         currency = document.getElementById("coinType").value;
         fetchData();
 //fetch the data every single minute
-        setInterval (fetchData,5000);   
+        setInterval (fetchData,60000);   
     } catch (error) {
     console.log(error) 
     }
